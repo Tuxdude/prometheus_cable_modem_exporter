@@ -6,7 +6,7 @@ A Prometheus exporter (written in go) for exporting the metrics of Cable Modems.
 
 This currently only works (and has been tested with) an Arris S33 Cable
 Modem. This custom prometheus exporter uses the
-[cablemodemutil go library](https://github.com/Tuxdude/cablemodemutil) for
+[`cablemodemutil` go library](https://github.com/Tuxdude/cablemodemutil) for
 interacting with the cable modem.
 
 # Usage
