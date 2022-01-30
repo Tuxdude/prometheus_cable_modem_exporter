@@ -81,6 +81,14 @@ func (m *metricsHelper) setInt32(desc *prometheus.Desc, value int32) {
 	m.setGauge(desc, float64(value))
 }
 
+func (m *metricsHelper) setBool(desc *prometheus.Desc, state bool) {
+	var value float64
+	if state {
+		value = 1
+	}
+	m.setGauge(desc, value)
+}
+
 func (m *metricsHelper) setGauge(desc *prometheus.Desc, value float64, labelValues ...string) {
 	labelValues = append([]string{m.host}, labelValues...)
 	m.ch <- prometheus.MustNewConstMetric(
