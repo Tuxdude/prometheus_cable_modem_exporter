@@ -16,7 +16,7 @@ const (
 	metricsPathFormat = "/%s"
 )
 
-func promHandler() http.Handler {
+func promHandler(cmCollector *collector) http.Handler {
 	// Use a custom registry to get rid of the default set of metrics
 	// added by prometheus and have full control.
 	reg := prometheus.NewPedanticRegistry()
@@ -25,6 +25,8 @@ func promHandler() http.Handler {
 		collectors.NewProcessCollector(collectors.ProcessCollectorOpts{}),
 		// Go Build Information.
 		collectors.NewBuildInfoCollector(),
+		// Cable Modem metrics collector.
+		cmCollector,
 		// Disable Go process metrics collector.
 		// collectors.NewGoCollector(),
 	)
@@ -36,7 +38,12 @@ func promHandler() http.Handler {
 	)
 }
 
-func startExporter(listenHost string, listenPort uint32, path string) {
+func startExporter(
+	listenHost string,
+	listenPort uint32,
+	path string,
+	cmCollector *collector,
+) {
 	logger := buildLogger()
 	defer logger.Sync() // nolint - flushes buffer, if any
 	log := logger.Sugar()
@@ -47,7 +54,7 @@ func startExporter(listenHost string, listenPort uint32, path string) {
 
 	// Set up HTTP handler for metrics.
 	mux := http.NewServeMux()
-	mux.Handle(metricsPath, promHandler())
+	mux.Handle(metricsPath, promHandler(cmCollector))
 
 	// Start listening for HTTP connections.
 	server := http.Server{
