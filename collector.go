@@ -106,6 +106,10 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 	m.setStr(descModel, st.Info.Model)
 	m.setStr(descSerialNumber, st.Info.SerialNumber)
 	m.setStr(descMACAddress, st.Info.MACAddress)
+	m.setBool(descFrontPanelLightsOn, st.Settings.FrontPanelLightsOn)
+	m.setBool(descEnergyEffEthOn, st.Settings.EnergyEfficientEthernetOn)
+	m.setBool(descAskMeLaterOn, st.Settings.AskMeLater)
+	m.setBool(descNeverAskOn, st.Settings.NeverAsk)
 	m.setInt32(descDsPower, conn.DownstreamSignalPowerDBMV)
 	m.setInt32(descDsSNR, conn.DownstreamSignalSNRDB)
 }

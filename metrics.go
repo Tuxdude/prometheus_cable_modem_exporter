@@ -35,6 +35,30 @@ var (
 		[]string{"cable_modem_instance", "mac_address"},
 		nil,
 	)
+	descFrontPanelLightsOn = prometheus.NewDesc(
+		"cable_modem_settings_front_panel_lights_on",
+		"Cable Modem Settings Front Panel Lights On",
+		[]string{"cable_modem_instance"},
+		nil,
+	)
+	descEnergyEffEthOn = prometheus.NewDesc(
+		"cable_modem_settings_energy_efficient_ethernet_on",
+		"Cable Modem Settings Energy Efficient Ethernet On",
+		[]string{"cable_modem_instance"},
+		nil,
+	)
+	descAskMeLaterOn = prometheus.NewDesc(
+		"cable_modem_settings_ask_me_later_on",
+		"Cable Modem Settings Ask Me Later On",
+		[]string{"cable_modem_instance"},
+		nil,
+	)
+	descNeverAskOn = prometheus.NewDesc(
+		"cable_modem_settings_never_ask_on",
+		"Cable Modem Settings Never Ask On",
+		[]string{"cable_modem_instance"},
+		nil,
+	)
 	descDsPower = prometheus.NewDesc(
 		"cable_modem_connection_downstream_signal_power_dbmv",
 		"Cable Modem Downstream Signal Power in dB mV",
@@ -52,6 +76,10 @@ var (
 		descModel,
 		descSerialNumber,
 		descMACAddress,
+		descFrontPanelLightsOn,
+		descEnergyEffEthOn,
+		descAskMeLaterOn,
+		descNeverAskOn,
 		descDsPower,
 		descDsSNR,
 	}
