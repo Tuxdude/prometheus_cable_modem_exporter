@@ -8,17 +8,41 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
-func (c *collector) fetch() (*cablemodemutil.CableModemStatus, error) {
+var (
+	// Cache responses from the cable modem for a duration of
+	// 30 seconds from when the request was sent.
+	// Querying the cable modem status is expensive (takes 8 seconds on
+	// average), and for the purpose of prometheus exporter the
+	// stale data within 30 seconds is plenty.
+	// Note that even an error response is cached, and the exporter
+	// will not query the cable modem until the cache expires.
+	cacheExpiry = 30 * time.Second
+)
+
+type cableModemStatus struct {
+	st  *cablemodemutil.CableModemStatus
+	err error
+}
+
+type cableModemStatusFetcher struct {
+}
+
+func newCableModemStatusFetcher() *cableModemStatusFetcher {
+	return &cableModemStatusFetcher{}
+}
+
+func (f *cableModemStatusFetcher) Fetch(in FetcherInput) (FetcherOutput, time.Time) {
 	logger := buildLogger()
 	defer logger.Sync() // nolint - flushes buffer, if any
 	log := logger.Sugar()
 
+	cm := in.(*cablemodemutil.Retriever)
 	log.Debugf("Begin Fetching status")
 	start := time.Now()
 
 	// This is a synchronous call to retrieve the status and takes
 	// anywhere from two to ten seconds on average.
-	st, err := c.cm.Status()
+	st, err := cm.Status()
 	elapsed := time.Since(start)
 	log.Debugf("End Fetching status, duration: %s", elapsed)
 
@@ -27,12 +51,17 @@ func (c *collector) fetch() (*cablemodemutil.CableModemStatus, error) {
 	} else {
 		log.Debugf("Fetched status successfully")
 	}
-	return st, err
+
+	res := &cableModemStatus{
+		st:  st,
+		err: err,
+	}
+	return res, start.Add(cacheExpiry)
 }
 
 type collector struct {
-	host string
-	cm   *cablemodemutil.Retriever
+	host  string
+	cache *Cache
 }
 
 func newCableModemCollector(
@@ -51,8 +80,8 @@ func newCableModemCollector(
 	}
 	cm := cablemodemutil.NewStatusRetriever(&input)
 	return &collector{
-		host: host,
-		cm:   cm,
+		host:  host,
+		cache: NewCache(newCableModemStatusFetcher(), cm),
 	}
 }
 
@@ -65,11 +94,12 @@ func (c *collector) Describe(ch chan<- *prometheus.Desc) {
 func (c *collector) Collect(ch chan<- prometheus.Metric) {
 	m := newMetricsHelper(c.host, ch)
 
-	st, err := c.fetch()
-	if err != nil {
-		m.raiseError(err)
+	out := c.cache.Get().(*cableModemStatus)
+	if out.err != nil {
+		m.raiseError(out.err)
 		return
 	}
+	st := out.st
 	conn := &st.Connection
 
 	m.setStr(up)
