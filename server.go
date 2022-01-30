@@ -25,8 +25,8 @@ func promHandler() http.Handler {
 		collectors.NewProcessCollector(collectors.ProcessCollectorOpts{}),
 		// Go Build Information.
 		collectors.NewBuildInfoCollector(),
-		// Go process metrics collector.
-		collectors.NewGoCollector(),
+		// Disable Go process metrics collector.
+		// collectors.NewGoCollector(),
 	)
 	return promhttp.HandlerFor(
 		reg,
