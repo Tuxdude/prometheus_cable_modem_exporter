@@ -59,6 +59,36 @@ var (
 		[]string{"cable_modem_instance"},
 		nil,
 	)
+	descCertInstalled = prometheus.NewDesc(
+		"cable_modem_software_certificate_installed",
+		"Cable Modem Software Certificate Installed",
+		[]string{"cable_modem_instance"},
+		nil,
+	)
+	descFwVer = prometheus.NewDesc(
+		"cable_modem_software_firmware_version",
+		"Cable Modem Software Firmware Version",
+		[]string{"cable_modem_instance", "firmware_version"},
+		nil,
+	)
+	descCustomerVer = prometheus.NewDesc(
+		"cable_modem_software_customer_version",
+		"Cable Modem Software Customer Version",
+		[]string{"cable_modem_instance", "customer_version"},
+		nil,
+	)
+	descHDVerVer = prometheus.NewDesc(
+		"cable_modem_software_hd_version",
+		"Cable Modem Software HD Version",
+		[]string{"cable_modem_instance", "hd_version"},
+		nil,
+	)
+	descDOCSISVer = prometheus.NewDesc(
+		"cable_modem_software_docsis_version",
+		"Cable Modem Software DOCSIS Version",
+		[]string{"cable_modem_instance", "docsis_version"},
+		nil,
+	)
 	descDsPower = prometheus.NewDesc(
 		"cable_modem_connection_downstream_signal_power_dbmv",
 		"Cable Modem Downstream Signal Power in dB mV",
@@ -80,6 +110,11 @@ var (
 		descEnergyEffEthOn,
 		descAskMeLaterOn,
 		descNeverAskOn,
+		descCertInstalled,
+		descFwVer,
+		descCustomerVer,
+		descHDVerVer,
+		descDOCSISVer,
 		descDsPower,
 		descDsSNR,
 	}
