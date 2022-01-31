@@ -130,6 +130,8 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 	m.setBool(descSecurityEnabled, st.Startup.Security.Enabled)
 	m.setStr(descSecurityComment, st.Startup.Security.Comment)
 
+	m.setUint32(descConnUpTime, uint32(st.Connection.UpTime/time.Second))
+
 	m.setInt32(descDsPower, conn.DownstreamSignalPowerDBMV)
 	m.setInt32(descDsSNR, conn.DownstreamSignalSNRDB)
 }

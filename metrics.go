@@ -113,6 +113,10 @@ var (
 		"Cable Modem Startup Security Comment",
 		"comment",
 	)
+	descConnUpTime = makeDesc(
+		"cable_modem_connection_uptime_seconds",
+		"Cable Modem Connection Up Time in seconds",
+	)
 	descDsPower = makeDesc(
 		"cable_modem_connection_downstream_signal_power_dbmv",
 		"Cable Modem Downstream Signal Power in dB mV",
@@ -135,8 +139,6 @@ var (
 		descCustomerVer,
 		descHDVerVer,
 		descDOCSISVer,
-		descDsPower,
-		descDsSNR,
 		descBootStatus,
 		descBootOperational,
 		descConfFileStatus,
@@ -147,6 +149,9 @@ var (
 		descStartupDsLocked,
 		descSecurityEnabled,
 		descSecurityComment,
+		descConnUpTime,
+		descDsPower,
+		descDsSNR,
 	}
 )
 
