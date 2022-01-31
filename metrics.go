@@ -180,11 +180,11 @@ func (m *metricsHelper) setStr(desc *prometheus.Desc, labelValue ...string) {
 	m.setGauge(desc, 1, labelValue...)
 }
 
-func (m *metricsHelper) setInt32(desc *prometheus.Desc, value int32) {
+func (m *metricsHelper) setUint32(desc *prometheus.Desc, value uint32) {
 	m.setGauge(desc, float64(value))
 }
 
-func (m *metricsHelper) setUint32(desc *prometheus.Desc, value uint32) {
+func (m *metricsHelper) setFloat32(desc *prometheus.Desc, value float32) {
 	m.setGauge(desc, float64(value))
 }
 

@@ -132,6 +132,6 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 
 	m.setUint32(descConnUpTime, uint32(st.Connection.UpTime/time.Second))
 
-	m.setInt32(descDsPower, conn.DownstreamSignalPowerDBMV)
-	m.setInt32(descDsSNR, conn.DownstreamSignalSNRDB)
+	m.setFloat32(descDsPower, conn.DownstreamSignalPowerDBMV)
+	m.setFloat32(descDsSNR, conn.DownstreamSignalSNRDB)
 }

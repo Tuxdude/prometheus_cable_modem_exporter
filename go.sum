@@ -191,8 +191,8 @@ github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UV
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/tuxdude/cablemodemutil v0.0.0-20220131060331-14032b0545e1 h1:LpwkPB3ovzK4CQ27k9ffpEBT8nPBhZowjBGZqUV0hu8=
-github.com/tuxdude/cablemodemutil v0.0.0-20220131060331-14032b0545e1/go.mod h1:yibz39O2NqPvixCXOmX+YUTRKultdT/agGatN1VZ+eo=
+github.com/tuxdude/cablemodemutil v0.0.0-20220131081324-5886abe3b0cf h1:NJsx5Y4hxhzqwuv/DvHwzwoq3KM/vXeTYxyIyJQi0yg=
+github.com/tuxdude/cablemodemutil v0.0.0-20220131081324-5886abe3b0cf/go.mod h1:yibz39O2NqPvixCXOmX+YUTRKultdT/agGatN1VZ+eo=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.32/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
