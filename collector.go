@@ -100,7 +100,6 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 		return
 	}
 	st := out.st
-	conn := &st.Connection
 
 	m.setStr(up)
 
@@ -131,7 +130,11 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 	m.setStr(descSecurityComment, st.Startup.Security.Comment)
 
 	m.setUint32(descConnUpTime, uint32(st.Connection.UpTime/time.Second))
-
-	m.setFloat32(descDsPower, conn.DownstreamSignalPowerDBMV)
-	m.setFloat32(descDsSNR, conn.DownstreamSignalSNRDB)
+	m.setBool(descDOCSISAccAllowed, st.Connection.DOCSISNetworkAccessAllowed)
+	m.setBool(descInternetConn, st.Connection.InternetConnected)
+	m.setStr(descDsPlan, st.Connection.DownstreamPlan)
+	m.setUint32(descPrimaryDsFreq, st.Connection.DownstreamFrequencyHZ)
+	m.setFloat32(descPrimaryDsPower, st.Connection.DownstreamSignalPowerDBMV)
+	m.setFloat32(descPrimaryDsSNR, st.Connection.DownstreamSignalSNRDB)
+	m.setUint32(descPrimaryUsChannelID, st.Connection.UpstreamChannelID)
 }

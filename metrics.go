@@ -117,13 +117,34 @@ var (
 		"cable_modem_connection_uptime_seconds",
 		"Cable Modem Connection Up Time in seconds",
 	)
-	descDsPower = makeDesc(
-		"cable_modem_connection_downstream_signal_power_dbmv",
-		"Cable Modem Downstream Signal Power in dB mV",
+	descDOCSISAccAllowed = makeDesc(
+		"cable_modem_connection_docsis_network_access_allowed",
+		"Cable Modem Connection DOCSIS Network Access Allowed",
 	)
-	descDsSNR = makeDesc(
-		"cable_modem_connection_downstream_signal_snr_db",
-		"Cable Modem Downstream Signal SNR in dB",
+	descInternetConn = makeDesc(
+		"cable_modem_connection_internet_connection_ok",
+		"Cable Modem Connection Internet Connection OK",
+	)
+	descDsPlan = makeDesc(
+		"cable_modem_connection_downstream_plan",
+		"Cable Modem Connection Downstream Plan",
+		"plan",
+	)
+	descPrimaryDsFreq = makeDesc(
+		"cable_modem_connection_primary_downstream_channel_frequency_hz",
+		"Cable Modem Connection Primary Downstream Channel Frequency in Hz",
+	)
+	descPrimaryDsPower = makeDesc(
+		"cable_modem_connection_primary_downstream_channel_signal_power_db_mv",
+		"Cable Modem Connection Primary Downstream Channel Signal Power in dB mV",
+	)
+	descPrimaryDsSNR = makeDesc(
+		"cable_modem_connection_primary_downstream_channel_signal_snr_db",
+		"Cable Modem Connection Primary Downstream Channel Signal SNR in dB",
+	)
+	descPrimaryUsChannelID = makeDesc(
+		"cable_modem_connection_primary_upstream_channel_id",
+		"Cable Modem Connection Primary Upstream Channel ID",
 	)
 	allMetrics = []*prometheus.Desc{
 		up,
@@ -150,8 +171,13 @@ var (
 		descSecurityEnabled,
 		descSecurityComment,
 		descConnUpTime,
-		descDsPower,
-		descDsSNR,
+		descDOCSISAccAllowed,
+		descInternetConn,
+		descDsPlan,
+		descPrimaryDsFreq,
+		descPrimaryDsPower,
+		descPrimaryDsSNR,
+		descPrimaryUsChannelID,
 	}
 )
 
