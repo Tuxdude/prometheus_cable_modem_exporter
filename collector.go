@@ -119,6 +119,17 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 	m.setStr(descHDVerVer, st.Software.HDVersion)
 	m.setStr(descDOCSISVer, st.Software.DOCSISSpecVersion)
 
+	m.setBool(descBootStatus, st.Startup.Boot.Status)
+	m.setBool(descBootOperational, st.Startup.Boot.Operational)
+	m.setBool(descConfFileStatus, st.Startup.ConfigFile.Status)
+	m.setStr(descConfFileComment, st.Startup.ConfigFile.Comment)
+	m.setBool(descConnStatus, st.Startup.Connectivity.Status)
+	m.setBool(descConnOperational, st.Startup.Connectivity.Operational)
+	m.setUint32(descStartupDsFreq, st.Startup.Downstream.FrequencyHZ)
+	m.setBool(descStartupDsLocked, st.Startup.Downstream.Locked)
+	m.setBool(descSecurityEnabled, st.Startup.Security.Enabled)
+	m.setStr(descSecurityComment, st.Startup.Security.Comment)
+
 	m.setInt32(descDsPower, conn.DownstreamSignalPowerDBMV)
 	m.setInt32(descDsSNR, conn.DownstreamSignalSNRDB)
 }

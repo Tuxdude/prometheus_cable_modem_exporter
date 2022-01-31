@@ -71,6 +71,48 @@ var (
 		"Cable Modem Software DOCSIS Version",
 		"docsis_version",
 	)
+	descBootStatus = makeDesc(
+		"cable_modem_startup_boot_status_ok",
+		"Cable Modem Startup Boot Status OK",
+	)
+	descBootOperational = makeDesc(
+		"cable_modem_startup_boot_operational",
+		"Cable Modem Startup Boot Operational",
+	)
+	descConfFileStatus = makeDesc(
+		"cable_modem_startup_config_file_status_ok",
+		"Cable Modem Startup Configuration File Status OK",
+	)
+	descConfFileComment = makeDesc(
+		"cable_modem_startup_config_file_comment",
+		"Cable Modem Startup Configuration File Comment",
+		"comment",
+	)
+	descConnStatus = makeDesc(
+		"cable_modem_startup_connectivity_status_ok",
+		"Cable Modem Startup Connectivity Status OK",
+	)
+	descConnOperational = makeDesc(
+		"cable_modem_startup_connectivity_status_operational",
+		"Cable Modem Startup Connectivity Status Operational",
+	)
+	descStartupDsFreq = makeDesc(
+		"cable_modem_startup_downstream_channel_frequency_hz",
+		"Cable Modem Startup Downstream Channel Frequency in Hz",
+	)
+	descStartupDsLocked = makeDesc(
+		"cable_modem_startup_downstream_channel_locked",
+		"Cable Modem Startup Downstream Channel Locked",
+	)
+	descSecurityEnabled = makeDesc(
+		"cable_modem_startup_security_enabled",
+		"Cable Modem Startup Security Enabled",
+	)
+	descSecurityComment = makeDesc(
+		"cable_modem_startup_security_comment",
+		"Cable Modem Startup Security Comment",
+		"comment",
+	)
 	descDsPower = makeDesc(
 		"cable_modem_connection_downstream_signal_power_dbmv",
 		"Cable Modem Downstream Signal Power in dB mV",
@@ -95,6 +137,16 @@ var (
 		descDOCSISVer,
 		descDsPower,
 		descDsSNR,
+		descBootStatus,
+		descBootOperational,
+		descConfFileStatus,
+		descConfFileComment,
+		descConnStatus,
+		descConnOperational,
+		descStartupDsFreq,
+		descStartupDsLocked,
+		descSecurityEnabled,
+		descSecurityComment,
 	}
 )
 
@@ -124,6 +176,10 @@ func (m *metricsHelper) setStr(desc *prometheus.Desc, labelValue ...string) {
 }
 
 func (m *metricsHelper) setInt32(desc *prometheus.Desc, value int32) {
+	m.setGauge(desc, float64(value))
+}
+
+func (m *metricsHelper) setUint32(desc *prometheus.Desc, value uint32) {
 	m.setGauge(desc, float64(value))
 }
 
