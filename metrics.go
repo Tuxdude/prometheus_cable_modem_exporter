@@ -2,6 +2,10 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
+const (
+	cmInstanceLabel = "cable_modem_instance"
+)
+
 var (
 	invalid = prometheus.NewDesc(
 		"cable_modem_error",
@@ -11,95 +15,69 @@ var (
 	)
 
 	// Up metric to indicate whether the cable modem is down or up.
-	up = prometheus.NewDesc(
-		"up",
-		"Cable Modem Up",
-		[]string{"cable_modem_instance"},
-		nil,
-	)
-	descModel = prometheus.NewDesc(
+	up        = makeDesc("up", "Cable Modem Up")
+	descModel = makeDesc(
 		"cable_modem_info_model",
 		"Cable Modem Model",
-		[]string{"cable_modem_instance", "model"},
-		nil,
+		"model",
 	)
-	descSerialNumber = prometheus.NewDesc(
+	descSerialNumber = makeDesc(
 		"cable_modem_info_serial_number",
 		"Cable Modem Serial Number",
-		[]string{"cable_modem_instance", "serial_number"},
-		nil,
+		"serial_number",
 	)
-	descMACAddress = prometheus.NewDesc(
+	descMACAddress = makeDesc(
 		"cable_modem_info_mac_address",
 		"Cable Modem MAC Address",
-		[]string{"cable_modem_instance", "mac_address"},
-		nil,
+		"mac_address",
 	)
-	descFrontPanelLightsOn = prometheus.NewDesc(
+	descFrontPanelLightsOn = makeDesc(
 		"cable_modem_settings_front_panel_lights_on",
 		"Cable Modem Settings Front Panel Lights On",
-		[]string{"cable_modem_instance"},
-		nil,
 	)
-	descEnergyEffEthOn = prometheus.NewDesc(
+	descEnergyEffEthOn = makeDesc(
 		"cable_modem_settings_energy_efficient_ethernet_on",
 		"Cable Modem Settings Energy Efficient Ethernet On",
-		[]string{"cable_modem_instance"},
-		nil,
 	)
-	descAskMeLaterOn = prometheus.NewDesc(
+	descAskMeLaterOn = makeDesc(
 		"cable_modem_settings_ask_me_later_on",
 		"Cable Modem Settings Ask Me Later On",
-		[]string{"cable_modem_instance"},
-		nil,
 	)
-	descNeverAskOn = prometheus.NewDesc(
+	descNeverAskOn = makeDesc(
 		"cable_modem_settings_never_ask_on",
 		"Cable Modem Settings Never Ask On",
-		[]string{"cable_modem_instance"},
-		nil,
 	)
-	descCertInstalled = prometheus.NewDesc(
+	descCertInstalled = makeDesc(
 		"cable_modem_software_certificate_installed",
 		"Cable Modem Software Certificate Installed",
-		[]string{"cable_modem_instance"},
-		nil,
 	)
-	descFwVer = prometheus.NewDesc(
+	descFwVer = makeDesc(
 		"cable_modem_software_firmware_version",
 		"Cable Modem Software Firmware Version",
-		[]string{"cable_modem_instance", "firmware_version"},
-		nil,
+		"firmware_version",
 	)
-	descCustomerVer = prometheus.NewDesc(
+	descCustomerVer = makeDesc(
 		"cable_modem_software_customer_version",
 		"Cable Modem Software Customer Version",
-		[]string{"cable_modem_instance", "customer_version"},
-		nil,
+		"customer_version",
 	)
-	descHDVerVer = prometheus.NewDesc(
+	descHDVerVer = makeDesc(
 		"cable_modem_software_hd_version",
 		"Cable Modem Software HD Version",
-		[]string{"cable_modem_instance", "hd_version"},
-		nil,
+		"hd_version",
 	)
-	descDOCSISVer = prometheus.NewDesc(
+	descDOCSISVer = makeDesc(
 		"cable_modem_software_docsis_version",
 		"Cable Modem Software DOCSIS Version",
-		[]string{"cable_modem_instance", "docsis_version"},
-		nil,
+		"docsis_version",
 	)
-	descDsPower = prometheus.NewDesc(
+	descDsPower = makeDesc(
 		"cable_modem_connection_downstream_signal_power_dbmv",
 		"Cable Modem Downstream Signal Power in dB mV",
-		[]string{"cable_modem_instance"},
-		nil,
 	)
-	descDsSNR = prometheus.NewDesc(
+	descDsSNR = makeDesc(
 		"cable_modem_connection_downstream_signal_snr_db",
 		"Cable Modem Downstream Signal SNR in dB",
-		[]string{"cable_modem_instance"},
-		nil,
 	)
 	allMetrics = []*prometheus.Desc{
 		up,
@@ -119,6 +97,11 @@ var (
 		descDsSNR,
 	}
 )
+
+func makeDesc(metric string, desc string, labels ...string) *prometheus.Desc {
+	labels = append([]string{cmInstanceLabel}, labels...)
+	return prometheus.NewDesc(metric, desc, labels, nil)
+}
 
 type metricsHelper struct {
 	host string
