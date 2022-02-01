@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/prometheus/client_golang v1.12.1
-	github.com/tuxdude/cablemodemutil v0.0.0-20220131081324-5886abe3b0cf
+	github.com/tuxdude/cablemodemutil v0.0.0-20220201075146-72daabc0ed00
 	go.uber.org/zap v1.20.0
 )
 
