@@ -151,4 +151,15 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 		m.setUint32(descDsChannelCorrectedErr, dsChan.CorrectedErrors, chanNum)
 		m.setUint32(descDsChannelUncorrectedErr, dsChan.UncorrectedErrors, chanNum)
 	}
+
+	for i := range st.Connection.UpstreamChannels {
+		usChan := &st.Connection.UpstreamChannels[i]
+		chanNum := fmt.Sprintf("%d", i)
+		m.setBool(descUsChannelLocked, usChan.Locked, chanNum)
+		m.setStr(descUsChannelMod, usChan.Modulation, chanNum)
+		m.setUint32(descUsChannelID, usChan.ChannelID, chanNum)
+		m.setUint32(descUsChannelWidth, usChan.WidthHZ, chanNum)
+		m.setUint32(descUsChannelFreq, usChan.FrequencyHZ, chanNum)
+		m.setFloat32(descUsChannelPower, usChan.SignalPowerDBMV, chanNum)
+	}
 }

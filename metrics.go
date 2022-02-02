@@ -187,6 +187,37 @@ var (
 		"Cable Modem Connection Downstream Channel Uncorrected Errors",
 		"channel_num",
 	)
+	descUsChannelLocked = makeDesc(
+		"cable_modem_connection_upstream_channel_locked",
+		"Cable Modem Connection Uptream Channel Locked",
+		"channel_num",
+	)
+	descUsChannelMod = makeDesc(
+		"cable_modem_connection_upstream_channel_modulation",
+		"Cable Modem Connection Uptream Channel Modulation",
+		"channel_num",
+		"modulation",
+	)
+	descUsChannelID = makeDesc(
+		"cable_modem_connection_upstream_channel_id",
+		"Cable Modem Connection Uptream Channel ID",
+		"channel_num",
+	)
+	descUsChannelWidth = makeDesc(
+		"cable_modem_connection_upstream_channel_width_hz",
+		"Cable Modem Connection Uptream Channel Width in Hz",
+		"channel_num",
+	)
+	descUsChannelFreq = makeDesc(
+		"cable_modem_connection_upstream_channel_frequency_hz",
+		"Cable Modem Connection Uptream Channel Frequency in Hz",
+		"channel_num",
+	)
+	descUsChannelPower = makeDesc(
+		"cable_modem_connection_upstream_channel_signal_power_db_mv",
+		"Cable Modem Connection Uptream Channel Signal Power in db mV",
+		"channel_num",
+	)
 	allMetrics = []*prometheus.Desc{
 		up,
 		descModel,
@@ -227,6 +258,12 @@ var (
 		descDsChannelSNR,
 		descDsChannelCorrectedErr,
 		descDsChannelUncorrectedErr,
+		descUsChannelLocked,
+		descUsChannelMod,
+		descUsChannelID,
+		descUsChannelWidth,
+		descUsChannelFreq,
+		descUsChannelPower,
 	}
 )
 
