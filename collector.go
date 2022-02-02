@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/tuxdude/cablemodemutil"
@@ -137,4 +138,17 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 	m.setFloat32(descPrimaryDsPower, st.Connection.DownstreamSignalPowerDBMV)
 	m.setFloat32(descPrimaryDsSNR, st.Connection.DownstreamSignalSNRDB)
 	m.setUint32(descPrimaryUsChannelID, st.Connection.UpstreamChannelID)
+
+	for i := range st.Connection.DownstreamChannels {
+		dsChan := &st.Connection.DownstreamChannels[i]
+		chanNum := fmt.Sprintf("%d", i)
+		m.setBool(descDsChannelLocked, dsChan.Locked, chanNum)
+		m.setStr(descDsChannelMod, dsChan.Modulation, chanNum)
+		m.setUint32(descDsChannelID, dsChan.ChannelID, chanNum)
+		m.setUint32(descDsChannelFreq, dsChan.FrequencyHZ, chanNum)
+		m.setFloat32(descDsChannelPower, dsChan.SignalPowerDBMV, chanNum)
+		m.setFloat32(descDsChannelSNR, dsChan.SignalSNRMERDB, chanNum)
+		m.setUint32(descDsChannelCorrectedErr, dsChan.CorrectedErrors, chanNum)
+		m.setUint32(descDsChannelUncorrectedErr, dsChan.UncorrectedErrors, chanNum)
+	}
 }
