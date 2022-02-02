@@ -202,32 +202,32 @@ func (m *metricsHelper) raiseError(err error) {
 	m.ch <- prometheus.NewInvalidMetric(invalid, err)
 }
 
-func (m *metricsHelper) setStr(desc *prometheus.Desc, labelValue ...string) {
-	m.setGauge(desc, 1, labelValue...)
+func (m *metricsHelper) setStr(desc *prometheus.Desc, labelValues ...string) {
+	m.setGauge(desc, 1, labelValues...)
 }
 
-func (m *metricsHelper) setUint32(desc *prometheus.Desc, value uint32) {
-	m.setGauge(desc, float64(value))
+func (m *metricsHelper) setUint32(desc *prometheus.Desc, gaugeValue uint32, labelValues ...string) {
+	m.setGauge(desc, float64(gaugeValue), labelValues...)
 }
 
-func (m *metricsHelper) setFloat32(desc *prometheus.Desc, value float32) {
-	m.setGauge(desc, float64(value))
+func (m *metricsHelper) setFloat32(desc *prometheus.Desc, gaugeValue float32, labelValues ...string) {
+	m.setGauge(desc, float64(gaugeValue), labelValues...)
 }
 
-func (m *metricsHelper) setBool(desc *prometheus.Desc, state bool) {
-	var value float64
+func (m *metricsHelper) setBool(desc *prometheus.Desc, state bool, labelValues ...string) {
+	var gaugeValue float64
 	if state {
-		value = 1
+		gaugeValue = 1
 	}
-	m.setGauge(desc, value)
+	m.setGauge(desc, gaugeValue, labelValues...)
 }
 
-func (m *metricsHelper) setGauge(desc *prometheus.Desc, value float64, labelValues ...string) {
+func (m *metricsHelper) setGauge(desc *prometheus.Desc, gaugeValue float64, labelValues ...string) {
 	labelValues = append([]string{m.host}, labelValues...)
 	m.ch <- prometheus.MustNewConstMetric(
 		desc,
 		prometheus.GaugeValue,
-		value,
+		gaugeValue,
 		labelValues...,
 	)
 }
