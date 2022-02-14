@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/prometheus/client_golang v1.12.1
 	github.com/tuxdude/cablemodemutil v0.0.0-20220201075146-72daabc0ed00
-	go.uber.org/zap v1.20.0
+	github.com/tuxdude/zzzlog v0.0.0-20220214215822-ddf3e24e6adc
 )
 
 require (
@@ -16,8 +16,7 @@ require (
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.32.1 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
-	go.uber.org/atomic v1.7.0 // indirect
-	go.uber.org/multierr v1.6.0 // indirect
+	github.com/tuxdude/zzzlogi v0.0.0-20220214214109-77ae620b508a // indirect
 	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
 	google.golang.org/protobuf v1.26.0 // indirect
 )

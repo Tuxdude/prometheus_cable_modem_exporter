@@ -33,10 +33,6 @@ func newCableModemStatusFetcher() *cableModemStatusFetcher {
 }
 
 func (f *cableModemStatusFetcher) Fetch(in FetcherInput) (FetcherOutput, time.Time) {
-	logger := buildLogger()
-	defer logger.Sync() // nolint - flushes buffer, if any
-	log := logger.Sugar()
-
 	cm := in.(*cablemodemutil.Retriever)
 	log.Debugf("Begin Fetching status")
 	start := time.Now()

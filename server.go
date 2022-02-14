@@ -44,10 +44,6 @@ func startExporter(
 	path string,
 	cmCollector *collector,
 ) {
-	logger := buildLogger()
-	defer logger.Sync() // nolint - flushes buffer, if any
-	log := logger.Sugar()
-
 	listenAddr := fmt.Sprintf(listenAddrFormat, listenHost, listenPort)
 	metricsPath := fmt.Sprintf(metricsPathFormat, path)
 	metricsURL := fmt.Sprintf(metricsURLFormat, listenHost, listenPort, path)

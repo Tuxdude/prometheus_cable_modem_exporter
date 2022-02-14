@@ -92,10 +92,6 @@ func (c *Cache) fetch() {
 // function call will be invoked as a side-effect (from a separate go-routine)
 // and only if the cached value has expired.
 func (c *Cache) Get() FetcherOutput {
-	logger := buildLogger()
-	defer logger.Sync() // nolint - flushes buffer, if any
-	log := logger.Sugar()
-
 	cacheHitOnFirstTry := true
 
 	var valid bool
