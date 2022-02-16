@@ -4,8 +4,8 @@ go 1.17
 
 require (
 	github.com/prometheus/client_golang v1.12.1
-	github.com/tuxdude/cablemodemutil v0.0.0-20220201075146-72daabc0ed00
-	github.com/tuxdude/zzzlog v0.0.0-20220214215822-ddf3e24e6adc
+	github.com/tuxdude/cablemodemutil v0.0.0-20220216080545-cabab7a75504
+	github.com/tuxdude/zzzlog v0.0.0-20220216074415-e0d74a85052e
 )
 
 require (

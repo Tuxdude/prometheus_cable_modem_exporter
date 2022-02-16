@@ -184,10 +184,10 @@ github.com/stretchr/objx v0.1.1/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
-github.com/tuxdude/cablemodemutil v0.0.0-20220201075146-72daabc0ed00 h1:Q8Ttri/XngSvJDj3HQhATjSQ9eEJxlg+KNn3/dMlLdM=
-github.com/tuxdude/cablemodemutil v0.0.0-20220201075146-72daabc0ed00/go.mod h1:yibz39O2NqPvixCXOmX+YUTRKultdT/agGatN1VZ+eo=
-github.com/tuxdude/zzzlog v0.0.0-20220214215822-ddf3e24e6adc h1:JItH0S+vL4k7/FIpyyMHU0+zY0+IWfXLxit+ShClokg=
-github.com/tuxdude/zzzlog v0.0.0-20220214215822-ddf3e24e6adc/go.mod h1:lb9+fY2/8rX51/Svp73mAzCoNei9mQp7wraVVSXQloc=
+github.com/tuxdude/cablemodemutil v0.0.0-20220216080545-cabab7a75504 h1:ORLLa92YxP0I4i41yC9ycrl96BZysLN2zBMuQLVfFJk=
+github.com/tuxdude/cablemodemutil v0.0.0-20220216080545-cabab7a75504/go.mod h1:yibz39O2NqPvixCXOmX+YUTRKultdT/agGatN1VZ+eo=
+github.com/tuxdude/zzzlog v0.0.0-20220216074415-e0d74a85052e h1:lUGxCa9/8cHNSHPUakjN/P4u6aWWfhzB6iqsWCs0ydU=
+github.com/tuxdude/zzzlog v0.0.0-20220216074415-e0d74a85052e/go.mod h1:lb9+fY2/8rX51/Svp73mAzCoNei9mQp7wraVVSXQloc=
 github.com/tuxdude/zzzlogi v0.0.0-20220214214109-77ae620b508a h1:6Sh5ebzygeKh7havCYmxelv9XzElQDKvR9qHZzyJgbc=
 github.com/tuxdude/zzzlogi v0.0.0-20220214214109-77ae620b508a/go.mod h1:pDoI7GNJZuYLZtVx4WL7lOQuECECY+XCHF6Sbv7YvzY=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
