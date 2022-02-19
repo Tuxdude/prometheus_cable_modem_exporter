@@ -4,8 +4,8 @@ go 1.17
 
 require (
 	github.com/prometheus/client_golang v1.12.1
-	github.com/tuxdude/cablemodemutil v0.0.0-20220216080545-cabab7a75504
-	github.com/tuxdude/zzzlog v0.0.0-20220216074415-e0d74a85052e
+	github.com/tuxdude/cablemodemutil v0.0.0-20220219223301-7ac0da401f27
+	github.com/tuxdude/zzzlog v0.0.0-20220219223817-4c692e705e22
 )
 
 require (
@@ -16,7 +16,7 @@ require (
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.32.1 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
-	github.com/tuxdude/zzzlogi v0.0.0-20220214214109-77ae620b508a // indirect
+	github.com/tuxdude/zzzlogi v0.0.0-20220216081404-c6b4527c5d4e // indirect
 	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
 	google.golang.org/protobuf v1.26.0 // indirect
 )
