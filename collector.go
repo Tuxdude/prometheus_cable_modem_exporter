@@ -121,7 +121,7 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 	m.setStr(descConfFileComment, st.Startup.ConfigFile.Comment)
 	m.setBool(descConnStatus, st.Startup.Connectivity.Status)
 	m.setBool(descConnOperational, st.Startup.Connectivity.Operational)
-	m.setUint32(descStartupDsFreq, st.Startup.Downstream.FrequencyHZ)
+	m.setFloat32(descStartupDsFreq, st.Startup.Downstream.FrequencyHZ)
 	m.setBool(descStartupDsLocked, st.Startup.Downstream.Locked)
 	m.setBool(descSecurityEnabled, st.Startup.Security.Enabled)
 	m.setStr(descSecurityComment, st.Startup.Security.Comment)
@@ -129,33 +129,33 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 	m.setUint32(descConnUpTime, uint32(st.Connection.UpTime/time.Second))
 	m.setBool(descDOCSISAccAllowed, st.Connection.DOCSISNetworkAccessAllowed)
 	m.setBool(descInternetConn, st.Connection.InternetConnected)
-	m.setStr(descDsPlan, st.Connection.DownstreamPlan)
-	m.setUint32(descPrimaryDsFreq, st.Connection.DownstreamFrequencyHZ)
-	m.setFloat32(descPrimaryDsPower, st.Connection.DownstreamSignalPowerDBMV)
-	m.setFloat32(descPrimaryDsSNR, st.Connection.DownstreamSignalSNRDB)
-	m.setUint32(descPrimaryUsChannelID, st.Connection.UpstreamChannelID)
 
-	for i := range st.Connection.DownstreamChannels {
-		dsChan := &st.Connection.DownstreamChannels[i]
+	m.setStr(descDsPlan, st.Connection.Downstream.Plan)
+	m.setFloat32(descPrimaryDsFreq, st.Connection.Downstream.FrequencyHZ)
+	m.setFloat32(descPrimaryDsPower, st.Connection.Downstream.SignalPowerDBMV)
+	m.setFloat32(descPrimaryDsSNR, st.Connection.Downstream.SignalSNRDB)
+	for i := range st.Connection.Downstream.Channels {
+		dsChan := &st.Connection.Downstream.Channels[i]
 		chanNum := fmt.Sprintf("%d", i)
 		m.setBool(descDsChannelLocked, dsChan.Locked, chanNum)
 		m.setStr(descDsChannelMod, dsChan.Modulation, chanNum)
 		m.setUint32(descDsChannelID, dsChan.ChannelID, chanNum)
-		m.setUint32(descDsChannelFreq, dsChan.FrequencyHZ, chanNum)
+		m.setFloat32(descDsChannelFreq, dsChan.FrequencyHZ, chanNum)
 		m.setFloat32(descDsChannelPower, dsChan.SignalPowerDBMV, chanNum)
 		m.setFloat32(descDsChannelSNR, dsChan.SignalSNRMERDB, chanNum)
 		m.setUint32(descDsChannelCorrectedErr, dsChan.CorrectedErrors, chanNum)
 		m.setUint32(descDsChannelUncorrectedErr, dsChan.UncorrectedErrors, chanNum)
 	}
 
-	for i := range st.Connection.UpstreamChannels {
-		usChan := &st.Connection.UpstreamChannels[i]
+	m.setUint32(descPrimaryUsChannelID, st.Connection.Upstream.ChannelID)
+	for i := range st.Connection.Upstream.Channels {
+		usChan := &st.Connection.Upstream.Channels[i]
 		chanNum := fmt.Sprintf("%d", i)
 		m.setBool(descUsChannelLocked, usChan.Locked, chanNum)
 		m.setStr(descUsChannelMod, usChan.Modulation, chanNum)
 		m.setUint32(descUsChannelID, usChan.ChannelID, chanNum)
-		m.setUint32(descUsChannelWidth, usChan.WidthHZ, chanNum)
-		m.setUint32(descUsChannelFreq, usChan.FrequencyHZ, chanNum)
+		m.setFloat32(descUsChannelWidth, usChan.WidthHZ, chanNum)
+		m.setFloat32(descUsChannelFreq, usChan.FrequencyHZ, chanNum)
 		m.setFloat32(descUsChannelPower, usChan.SignalPowerDBMV, chanNum)
 	}
 }
