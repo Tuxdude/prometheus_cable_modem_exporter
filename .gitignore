@@ -1,2 +1,4 @@
-prometheus_cable_modem_exporter
+.makesystem
+coverage.out
 dist/
+prometheus_cable_modem_exporter
