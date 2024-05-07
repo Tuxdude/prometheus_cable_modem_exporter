@@ -11,13 +11,13 @@ import (
 
 var (
 	// Cache responses from the cable modem for a duration of
-	// 30 seconds from when the request was sent.
+	// 30 minutes from when the request was sent.
 	// Querying the cable modem status is expensive (takes 8 seconds on
 	// average), and for the purpose of prometheus exporter the
-	// stale data within 30 seconds is plenty.
+	// stale data within 30 minutes is plenty.
 	// Note that even an error response is cached, and the exporter
 	// will not query the cable modem until the cache expires.
-	cacheExpiry = 30 * time.Second
+	cacheExpiry = 30 * time.Minute
 )
 
 type cableModemStatus struct {
