@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"time"
 
@@ -26,10 +27,11 @@ type cableModemStatus struct {
 }
 
 type cableModemStatusFetcher struct {
+	debugStatus bool
 }
 
-func newCableModemStatusFetcher() *cableModemStatusFetcher {
-	return &cableModemStatusFetcher{}
+func newCableModemStatusFetcher(debugStatus bool) *cableModemStatusFetcher {
+	return &cableModemStatusFetcher{debugStatus: debugStatus}
 }
 
 func (f *cableModemStatusFetcher) Fetch(in FetcherInput) (FetcherOutput, time.Time) {
@@ -47,6 +49,10 @@ func (f *cableModemStatusFetcher) Fetch(in FetcherInput) (FetcherOutput, time.Ti
 		log.Errorf("Failed to fetch status: %s", err)
 	} else {
 		log.Debugf("Fetched status successfully")
+	}
+
+	if f.debugStatus {
+		fmt.Println(prettyPrintJSON(st))
 	}
 
 	res := &cableModemStatus{
@@ -70,6 +76,7 @@ func newCableModemCollector(
 	debug bool,
 	debugReq bool,
 	debugResp bool,
+	debugStatus bool,
 ) *collector {
 	input := cablemodemutil.RetrieverInput{
 		Host:           host,
@@ -84,7 +91,7 @@ func newCableModemCollector(
 	cm := cablemodemutil.NewStatusRetriever(&input)
 	return &collector{
 		host:  host,
-		cache: NewCache(newCableModemStatusFetcher(), cm),
+		cache: NewCache(newCableModemStatusFetcher(debugStatus), cm),
 	}
 }
 
@@ -164,4 +171,13 @@ func (c *collector) Collect(ch chan<- prometheus.Metric) {
 		m.setFloat32(descUsChannelFreq, usChan.FrequencyHZ, chanNum)
 		m.setFloat32(descUsChannelPower, usChan.SignalPowerDBMV, chanNum)
 	}
+}
+
+// Returns the JSON formatted string representation of the specified object.
+func prettyPrintJSON(x interface{}) string {
+	p, err := json.MarshalIndent(x, "", "  ")
+	if err != nil {
+		return fmt.Sprintf("%#v", x)
+	}
+	return string(p)
 }
