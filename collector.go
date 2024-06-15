@@ -67,6 +67,9 @@ func newCableModemCollector(
 	skipVerifyCert bool,
 	user string,
 	pass string,
+	debug bool,
+	debugReq bool,
+	debugResp bool,
 ) *collector {
 	input := cablemodemutil.RetrieverInput{
 		Host:           host,
@@ -75,6 +78,9 @@ func newCableModemCollector(
 		Username:       user,
 		ClearPassword:  pass,
 	}
+	input.Debug.Debug = debug
+	input.Debug.DebugReq = debugReq
+	input.Debug.DebugResp = debugResp
 	cm := cablemodemutil.NewStatusRetriever(&input)
 	return &collector{
 		host:  host,

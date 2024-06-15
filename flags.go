@@ -3,6 +3,9 @@ package main
 import "flag"
 
 var (
+	debug            = flag.Bool("debug", false, "Log additional debug information except for requests and responses for querying the cable modem")
+	debugReq         = flag.Bool("debugReq", false, "Log additional debug information for requests to the cable modem")
+	debugResp        = flag.Bool("debugResp", false, "Log additional debug information for responses from the cable modem")
 	listenHost       = flag.String("listenHost", "localhost", "The hostname or IP on which the prometheus metrics exporter listens on")
 	listenPort       = flag.Uint("listenPort", 8080, "The port number on which the prometheus metrics exporter listens on")
 	metricsUri       = flag.String("metricsUri", "metrics", "The relative path suffix in the URI (without any leading or trailing slashes) where the metrics will be made available")
