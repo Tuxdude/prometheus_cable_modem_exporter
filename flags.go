@@ -15,4 +15,5 @@ var (
 	cmSkipVerifyCert = flag.Bool("cableModemSkipVerifyCert", true, "Skip SSL cert verification (because of self-signed certs on the cable modem)")
 	cmUser           = flag.String("cableModemUsername", "admin", "Admin username")
 	cmPass           = flag.String("cableModemPassword", "password", "Admin password")
+	demoMode         = flag.Bool("demoMode", false, "Ignores the cable modem settings and merely simulates a cable modem instead")
 )
