@@ -59,6 +59,10 @@ func (f *cableModemStatusFetcher) Fetch(in FetcherInput) (FetcherOutput, time.Ti
 		st:  st,
 		err: err,
 	}
+
+	if err != nil {
+		return res, start
+	}
 	return res, start.Add(cacheExpiry)
 }
 
