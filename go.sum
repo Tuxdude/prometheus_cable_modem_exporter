@@ -953,9 +953,8 @@ github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXl
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/tuxdude/cablemodemutil v0.3.1 h1:2RTVdyctYwRlMyUhhKD7us92AiBtThrZPrCdReWVpNc=
 github.com/tuxdude/cablemodemutil v0.3.1/go.mod h1:yibz39O2NqPvixCXOmX+YUTRKultdT/agGatN1VZ+eo=
-github.com/tuxdude/zzzlog v0.2.2 h1:EHkPEU5y46pmtlJp/7wOiqkNE1CZy704PfvK+BAXQIw=
-github.com/tuxdude/zzzlog v0.2.2/go.mod h1:xF2YB8uuECY2MLgjzHFGUrRCvBiYD/ji/LjlWKx7Gno=
-github.com/tuxdude/zzzlogi v0.1.0/go.mod h1:pDoI7GNJZuYLZtVx4WL7lOQuECECY+XCHF6Sbv7YvzY=
+github.com/tuxdude/zzzlog v0.2.3 h1:f9VkS0sJ8LAp9/wjW/qFdM90UJt5ITijphO0ILRerVM=
+github.com/tuxdude/zzzlog v0.2.3/go.mod h1:DHTkiOmpQbt5XtqvHFdD2C9ESd2Nbjd0ecKa941JG5s=
 github.com/tuxdude/zzzlogi v0.1.1 h1:/YcPkhFzrQlvZR++7v7z42k1l3pgsgMtcrg9QKiEXEU=
 github.com/tuxdude/zzzlogi v0.1.1/go.mod h1:pDoI7GNJZuYLZtVx4WL7lOQuECECY+XCHF6Sbv7YvzY=
 github.com/xhit/go-str2duration v1.2.0/go.mod h1:3cPSlfZlUHVlneIVfePFWcJZsuwf+P1v2SRTV4cUmp4=
