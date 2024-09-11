@@ -955,8 +955,9 @@ github.com/tuxdude/cablemodemutil v0.3.1 h1:2RTVdyctYwRlMyUhhKD7us92AiBtThrZPrCd
 github.com/tuxdude/cablemodemutil v0.3.1/go.mod h1:yibz39O2NqPvixCXOmX+YUTRKultdT/agGatN1VZ+eo=
 github.com/tuxdude/zzzlog v0.3.0 h1:HREeOHANV5YEs4NKr7y9iSu37q3ZKcD2CIJp0yc+D0c=
 github.com/tuxdude/zzzlog v0.3.0/go.mod h1:Q04MoIXLrohVY0J1ZkVznQd41u4pzpKwK74su7VWvwc=
-github.com/tuxdude/zzzlogi v0.1.2 h1:APwowwCALOA2QpcrSxcBME20gb+RVm3RZvRXH7DjJCE=
 github.com/tuxdude/zzzlogi v0.1.2/go.mod h1:pDoI7GNJZuYLZtVx4WL7lOQuECECY+XCHF6Sbv7YvzY=
+github.com/tuxdude/zzzlogi v0.2.0 h1:LcOJNqbRNeRdN5FPGu6J4JcoabKbmhlmMtHwDb6n0x8=
+github.com/tuxdude/zzzlogi v0.2.0/go.mod h1:pDoI7GNJZuYLZtVx4WL7lOQuECECY+XCHF6Sbv7YvzY=
 github.com/xhit/go-str2duration v1.2.0/go.mod h1:3cPSlfZlUHVlneIVfePFWcJZsuwf+P1v2SRTV4cUmp4=
 github.com/xhit/go-str2duration/v2 v2.1.0/go.mod h1:ohY8p+0f07DiV6Em5LKB0s2YpLtXVyJfNt1+BlmyAsU=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
