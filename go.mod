@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/prometheus/client_golang v1.20.4
 	github.com/tuxdude/cablemodemutil v0.3.1
-	github.com/tuxdude/zzzlog v0.3.2
+	github.com/tuxdude/zzzlog v0.3.3
 	github.com/tuxdude/zzzlogi v0.2.0
 )
 
