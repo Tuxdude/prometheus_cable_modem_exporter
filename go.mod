@@ -3,7 +3,7 @@ module github.com/tuxdude/prometheus_cable_modem_exporter
 go 1.17
 
 require (
-	github.com/prometheus/client_golang v1.20.4
+	github.com/prometheus/client_golang v1.20.5
 	github.com/tuxdude/cablemodemutil v0.3.1
 	github.com/tuxdude/zzzlog v0.3.4
 	github.com/tuxdude/zzzlogi v0.2.0
